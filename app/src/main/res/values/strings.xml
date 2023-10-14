@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SecondLab</string>
+    <string name="app_name">secondlab</string>
 
     <string name="hint_enter_sentence">Enter your sentence</string>
     <string name="button_text">Count</string>
