@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,15 +34,22 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        button.setText(R.string.button_text);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String inputText = editText.getText().toString();
                 String selectedOption = spinner.getSelectedItem().toString();
 
-                int count = WordCharacterCounter.getCount(inputText, selectedOption);
-                textView.setText("Count: " + count);
+                if (inputText.isEmpty()) {
+                    Toast.makeText(MainActivity.this, R.string.toast_empty_sentence, Toast.LENGTH_SHORT).show();
+                } else {
+                    int count = WordCharacterCounter.getCount(inputText, selectedOption);
+                    textView.setText(getString(R.string.result_prefix) + count);
+                }
             }
         });
     }
 }
+
